@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_ziro/data.dart';
 
 class DetailPage extends StatelessWidget {
-  final String nama;
-  final String detail;
-  final String foto;
-  final String kota;
+  final String name;
+  final String description;
+  final String pictureId;
+  final String city;
   final double rating;
   final List<Drink> foods;
   final List<Drink> drink;
   const DetailPage({
     super.key,
-    required this.nama,
-    required this.detail,
-    required this.foto,
-    required this.kota,
+    required this.name,
+    required this.description,
+    required this.pictureId,
+    required this.city,
     required this.rating,
     required this.foods,
     required this.drink,
@@ -31,7 +31,7 @@ class DetailPage extends StatelessWidget {
                 Stack(
                   children: [
                     Image.network(
-                      foto,
+                      pictureId,
                       fit: BoxFit.contain,
                     ),
                     Container(
@@ -55,7 +55,7 @@ class DetailPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        nama,
+                        name,
                         style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -93,7 +93,7 @@ class DetailPage extends StatelessWidget {
                         color: Colors.amber,
                         size: 20.0,
                       ),
-                      Text(kota),
+                      Text(city),
                     ],
                   ),
                 ),
@@ -117,7 +117,7 @@ class DetailPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    detail,
+                    description,
                     style: const TextStyle(fontSize: 15),
                   ),
                 ),

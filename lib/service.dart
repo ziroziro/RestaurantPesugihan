@@ -1,24 +1,17 @@
 import 'dart:developer';
 
-import 'package:http/http.dart' as http;
+// ignore: library_prefixes
+import 'package:flutter/services.dart' as rootBundle;
 
 import 'data.dart';
 
 class Service {
-  static const String url =
-      'https://raw.githubusercontent.com/dicodingacademy/assets/main/flutter_fundamental_academy/local_restaurant.json';
-
   static Future<RestaurantPost> getRestaurant() async {
     try {
-      final response = await http.get(Uri.parse(url));
-      if (response.statusCode == 200) {
-        final RestaurantPost listRestaurant =
-            restaurantPostFromJson(response.body);
-        return listRestaurant;
-      } else {
-        log("message: Failed");
-        return RestaurantPost(restaurants: <Restaurant>[]);
-      }
+      final response = await rootBundle.rootBundle
+          .loadString('jsonfile/local_restaurant.json');
+      final RestaurantPost listRestaurant = restaurantPostFromJson(response);
+      return listRestaurant;
     } catch (e) {
       log("message: $e");
       return RestaurantPost(restaurants: <Restaurant>[]);
